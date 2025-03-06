@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parser de CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Uploader un CV</h1>
+        <form action="/upload_resume" method="post" enctype="multipart/form-data">
+            <label for="resume">Choisir un CV (PDF) :</label>
+            <input type="file" name="resume" id="resume" accept=".pdf" required>
+            <button type="submit">Télécharger</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats du Parser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats du CV</h1>
+        <table>
+            <tr>
+                <th>Nom Complet</th>
+                <td>{{ data.fullName }}</td>
+            </tr>
+            <tr>
+                <th>Numéro de Contact</th>
+                <td>{{ data.contactNumber }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ data.emailAddress }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ data.location }}</td>
+            </tr>
+            <tr>
+                <th>Compétences</th>
+                <td class="skills">
+                    <ul>
+                        {% for skill in data.skills %}
+                            <li>{{ skill }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Education</th>
+                <td>{{ data.education }}</td>
+            </tr>
+            <tr class="workExperience">
+                <th>Expérience Professionnelle</th>
+                <td>
+                    <ul>
+                        {% for experience in data.workExperience %}
+                            <li>
+                                <div class="jobTitle">{{ experience.jobTitle }}</div>
+                                <div class="companyName">{{ experience.companyName }}</div>
+                                <div class="jobDuration">{{ experience.jobDuration }}</div>
+                                <div class="jobDescription">
+                                    <p>{{ experience.jobDescription }}</p>
+                                    <ul>
+                                        {% for responsibility in experience.responsibilities %}
+                                            <li>{{ responsibility }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Certifications</th>
+                <td>{{ data.certifications }}</td>
+            </tr>
+            <tr>
+                <th>Rôles recommandés</th>
+                <td>{{ data.recommendedJobRoles }}</td>
+            </tr>
+        </table>
+        <a href="/">Retourner à l'Upload</a>
+    </div>
+</body>
+</html>
